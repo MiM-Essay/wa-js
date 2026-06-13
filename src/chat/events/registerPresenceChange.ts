@@ -17,16 +17,21 @@
 import { internalEv } from '../../eventEmitter';
 import {
   ChatstateModel,
-  ChatStore,
   ContactStore,
   PresenceStore,
 } from '../../whatsapp';
 
-internalEv.on('conn.main_ready', async () => {
-  const promises = ChatStore.map((c) => c.presence.subscribe());
-
-  await Promise.all(promises);
-
+internalEv.on('conn.main_ready', () => {
+  // Kraya patch — do NOT auto-subscribe presence for every chat on connect.
+  //
+  // Upstream fires one presence-subscribe stanza per chat in ChatStore, in
+  // parallel, the instant the session reaches `conn.main_ready` — before any
+  // message is sent. On an account with a large chat roster this is a burst of
+  // hundreds of stanzas that WhatsApp's anti-abuse system reads as an automation
+  // tool, and is a leading cause of accounts being restricted with zero messages
+  // sent. Kraya never consumes the `chat.presence_change` event, so this
+  // subscription is pure ban risk with no benefit. We keep register() so the
+  // event wiring stays intact (it simply never fires without subscriptions).
   register();
 });
 
