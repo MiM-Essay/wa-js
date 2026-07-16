@@ -14,26 +14,20 @@
  * limitations under the License.
  */
 
-import { Wid } from '..';
 import { exportModule } from '../exportModule';
 
 /**
- * @whatsapp 153438 >= 2.2301.5
- *
- * When `membershipApprovalMode` is `false` (default) the server must respond
- * with a `<group>` node; when `true` it must respond with
- * `<membership_approval_request>`.  If the wrong node is returned the function
- * throws `UnexpectedJoinGroupViaInviteResponse` (see WAWebBackendErrors).
+ * @whatsapp 95547
+ * @whatsapp 695547 >= 2.2222.8
+ * @whatsapp 925080 >= 2.2228.4
  */
-export declare function joinGroupViaInvite(
-  code: string,
-  membershipApprovalMode: boolean
-): Promise<{ gid: Wid }>;
+
+export declare function useExternalBetaOptIn(value: any): any;
 
 exportModule(
   exports,
   {
-    joinGroupViaInvite: 'joinGroupViaInvite',
+    useExternalBetaOptIn: 'useExternalBetaOptIn',
   },
-  (m) => m.joinGroupViaInvite && m.resetGroupInviteCode
+  (m) => m.useExternalBetaOptIn
 );

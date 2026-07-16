@@ -1,3 +1,3 @@
-## 4.3.0 (2026-05-19)
+## <small>4.4.1 (2026-07-15)</small>
 
-* build(deps-dev): update dependency @wppconnect/wa-version to ^1.5.3967 (#3459) ([399fa1478d6037c83ef4f6baadeea49e7944f1c8](https://github.com/wppconnect-team/wa-js/commit/399fa1478d6037c83ef4f6baadeea49e7944f1c8)), closes [#3459](https://github.com/wppconnect-team/wa-js/issues/3459)
+* fix: restore MsgKey._serialized on keys created before injection (#3488) ([a0abd24b69b29bb93d6ba49c8a3422dac057a9b7](https://github.com/wppconnect-team/wa-js/commit/a0abd24b69b29bb93d6ba49c8a3422dac057a9b7)), closes [#3488](https://github.com/wppconnect-team/wa-js/issues/3488) [#3484](https://github.com/wppconnect-team/wa-js/issues/3484)
